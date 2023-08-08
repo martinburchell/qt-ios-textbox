@@ -24,24 +24,6 @@
 #include <QGraphicsProxyWidget>
 #include <QWidget>
 
-struct TextConfig {
-public:
-    TextConfig(int font_size_px,
-               const QColor& colour,
-               int width = -1,
-               Qt::Alignment alignment = Qt::AlignCenter);
-    TextConfig& setFontSize(int font_size_px);
-    TextConfig& setColour(const QColor& colour);
-    TextConfig& setWidth(int width);
-    TextConfig& setAlignment(Qt::Alignment alignment);
-public:
-    int font_size_px;
-    QColor colour;
-    int width;
-    Qt::Alignment alignment;
-};
-
-
 class App : public QApplication
 {
     Q_OBJECT
@@ -58,11 +40,8 @@ public:
                                  const int margin);
     void makeText(QGraphicsScene* scene,  // text is added to scene
                   const QPointF& pos,
-                  const TextConfig& config,
                   const QString& text,
                   QFont font = QFont(),
                   QWidget* parent = nullptr);
-    QString labelCss(const QColor& colour);
-    QString colourCss(const QColor& colour);
-    void alignRect(QRectF& rect, const Qt::Alignment alignment);
+    void alignRect(QRectF& rect);
 };
