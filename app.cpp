@@ -97,7 +97,7 @@ void App::makeText(QGraphicsScene* scene,  // text is added to scene
     QString css = labelCss(config.colour);
 
     auto label = new QLabel(text, parent);
-    label->setStyleSheet(css);
+    //label->setStyleSheet(css);
     font.setPixelSize(config.font_size_px);
     label->setFont(font);
     label->setAlignment(config.alignment);  // alignment WITHIN label
