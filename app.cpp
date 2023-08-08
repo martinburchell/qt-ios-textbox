@@ -132,15 +132,9 @@ void App::makeText(QGraphicsScene* scene,  // text is added to scene
     label->setAlignment(config.alignment);  // alignment WITHIN label
 
     QRectF rect(pos, QSizeF());
-    if (config.width == -1) {
-        label->setWordWrap(false);
-        rect.setSize(label->size());
-    } else {
-        // word wrap
-        label->setWordWrap(true);
-        rect.setSize(QSizeF(config.width,
-                            label->heightForWidth(config.width)));
-    }
+    label->setWordWrap(true);
+    rect.setSize(QSizeF(config.width,
+                        label->heightForWidth(config.width)));
 
     // Now fix alignment of WHOLE object
     alignRect(rect, config.alignment);
