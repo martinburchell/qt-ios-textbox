@@ -48,13 +48,13 @@ int App::run()
     auto graphics_widget = makeGraphicsWidget(scene, QColor(0, 0, 0));
 
     const QString& text = "Correct";
-    const QColor& colour = QColor(0, 128, 0);
+    // const QColor& colour = QColor(0, 128, 0);
 
-    auto answer_backdrop_rect = centredRect(SCENE_CENTRE,
-                                            0.3 * SCENE_WIDTH,
-                                            0.1 * SCENE_HEIGHT);
+    // auto answer_backdrop_rect = centredRect(SCENE_CENTRE,
+    //                                         0.3 * SCENE_WIDTH,
+    //                                         0.1 * SCENE_HEIGHT);
 
-    scene->addRect(answer_backdrop_rect, QPen(Qt::NoPen), QBrush(colour));
+    // scene->addRect(answer_backdrop_rect, QPen(Qt::NoPen), QBrush(colour));
     makeText(scene, SCENE_CENTRE, BASE_TEXT_CONFIG, text);
 
     auto main_window = new QMainWindow();
@@ -113,16 +113,12 @@ void App::makeText(QGraphicsScene* scene,  // text is added to scene
     label->setStyleSheet(css);
     font.setPixelSize(config.font_size_px);
     label->setFont(font);
-    // label->setOpenExternalLinks(false);
-    // label->setTextInteractionFlags(Qt::NoTextInteraction);
     label->setAlignment(config.alignment);  // alignment WITHIN label
 
     QRectF rect(pos, QSizeF());
-    // label->setWordWrap(true);
     rect.setSize(QSizeF(config.width,
                         label->heightForWidth(config.width)));
 
-    // Now fix alignment of WHOLE object
     alignRect(rect, config.alignment);
 
     auto proxy = scene->addWidget(label);
