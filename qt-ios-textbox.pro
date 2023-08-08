@@ -58,7 +58,7 @@ android {
     QMAKE_RESOURCE_FLAGS += "-compress-algo zlib"
 }
 
-TARGET = qt-aboutqt
+TARGET = qt-ios-textbox
 TEMPLATE = app
 
 
@@ -70,7 +70,7 @@ ios {
     QMAKE_MAC_XCODE_SETTINGS += disable_warning
 
     QMAKE_TARGET_BUNDLE_PREFIX = "uk.ac.cam.psychiatry"
-    QMAKE_BUNDLE = "aboutqt"
+    QMAKE_BUNDLE = "iostextbox"
 }
 
 SOURCES += \
