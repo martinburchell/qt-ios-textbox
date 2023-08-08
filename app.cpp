@@ -33,7 +33,14 @@ int App::run()
     scene->setBackgroundBrush(QBrush(QColor(0, 0, 0)));
     auto graphics_widget = makeGraphicsWidget(scene, QColor(0, 0, 0));
 
-    makeText(scene, QPointF(0,0), "Correct");
+    auto label = new QLabel("Correct");
+
+    auto font = QFont();
+    font.setPixelSize(20);
+    label->setFont(font);
+    label->setAlignment(Qt::AlignCenter);
+
+    scene->addWidget(label);
 
     auto main_window = new QMainWindow();
     main_window->setCentralWidget(graphics_widget);
@@ -60,45 +67,12 @@ void App::setWidgetAsOnlyContents(QWidget* graphics_widget,
                                   QWidget* graphics_view,
                                   const int margin)
 {
+    Q_UNUSED(margin)
+
     QLayout* l = graphics_widget->layout();
     delete l;
 
     auto vl = new QVBoxLayout(graphics_widget);
     graphics_widget->setLayout(vl);
-    vl->setContentsMargins(margin, margin, margin, margin);
     vl->addWidget(graphics_view);
-}
-
-
-
-void App::makeText(QGraphicsScene* scene,  // text is added to scene
-                   const QPointF& pos,
-                   const QString& text,
-                   QFont font,
-                   QWidget* parent)
-{
-    Q_ASSERT(scene);
-
-    auto label = new QLabel(text, parent);
-    font.setPixelSize(20);
-    label->setFont(font);
-    label->setAlignment(Qt::AlignCenter);
-
-    QRectF rect(pos, QSizeF());
-    const int width = static_cast<int>(SCENE_WIDTH);
-    const int height = label->heightForWidth(width);
-    rect.setSize(QSizeF(width, height));
-
-    // alignRect(rect);
-
-    scene->addWidget(label);
-    //proxy->setGeometry(rect);
-}
-
-void App::alignRect(QRectF& rect)
-{
-    qreal dx = -rect.width() / 2;
-    qreal dy = -rect.height() / 2;
-
-    rect.translate(dx, dy);
 }

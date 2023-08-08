@@ -38,10 +38,4 @@ public:
     void setWidgetAsOnlyContents(QWidget* graphics_widget,
                                  QWidget* graphics_view,
                                  const int margin);
-    void makeText(QGraphicsScene* scene,  // text is added to scene
-                  const QPointF& pos,
-                  const QString& text,
-                  QFont font = QFont(),
-                  QWidget* parent = nullptr);
-    void alignRect(QRectF& rect);
 };
