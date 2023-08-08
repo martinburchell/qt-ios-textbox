@@ -21,7 +21,6 @@ const qreal SCENE_WIDTH = 1000;
 const qreal SCENE_HEIGHT = 750;  // 4:3 aspect ratio
 const QPointF SCENE_CENTRE(SCENE_WIDTH * 0.5, SCENE_HEIGHT * 0.5);
 const QRectF SCENE_RECT(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
-const qreal FEEDBACK_OPACITY = 0.75;
 const int TEXT_SIZE_PX = 20;  // will be scaled
 const TextConfig BASE_TEXT_CONFIG(TEXT_SIZE_PX, QColor(255, 255, 255),
                                   static_cast<int>(SCENE_WIDTH), Qt::AlignCenter);
@@ -50,7 +49,6 @@ int App::run()
 
     const QString& text = "Correct";
     const QColor& colour = QColor(0, 128, 0);
-    // makeObscuringRect(scene, SCENE_RECT, FEEDBACK_OPACITY, colour);
 
     auto answer_backdrop_rect = centredRect(SCENE_CENTRE,
                                             0.3 * SCENE_WIDTH,
@@ -101,18 +99,6 @@ QRectF App::centredRect(const QPointF& centre, const qreal w, const qreal h)
 }
 
 
-QGraphicsRectItem* App::makeObscuringRect(QGraphicsScene* scene,
-                                          const QRectF& rect, const qreal opacity,
-                                          const QColor& colour_ignoring_opacity)
-{
-    const QPen pen(Qt::NoPen);
-    QColor colour(colour_ignoring_opacity);
-    const int alpha = qBound(0, qRound(qBound(0.0, opacity, 1.0) * 255), 255);
-    colour.setAlpha(alpha);
-    const QBrush brush(colour);
-    return scene->addRect(rect, pen, brush);
-}
-
 void App::makeText(QGraphicsScene* scene,  // text is added to scene
                    const QPointF& pos,
                    const TextConfig& config,
@@ -127,12 +113,12 @@ void App::makeText(QGraphicsScene* scene,  // text is added to scene
     label->setStyleSheet(css);
     font.setPixelSize(config.font_size_px);
     label->setFont(font);
-    label->setOpenExternalLinks(false);
-    label->setTextInteractionFlags(Qt::NoTextInteraction);
+    // label->setOpenExternalLinks(false);
+    // label->setTextInteractionFlags(Qt::NoTextInteraction);
     label->setAlignment(config.alignment);  // alignment WITHIN label
 
     QRectF rect(pos, QSizeF());
-    label->setWordWrap(true);
+    // label->setWordWrap(true);
     rect.setSize(QSizeF(config.width,
                         label->heightForWidth(config.width)));
 

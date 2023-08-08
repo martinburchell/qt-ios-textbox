@@ -57,10 +57,6 @@ public:
                                  QWidget* graphics_view,
                                  const int margin);
     QRectF centredRect(const QPointF& centre, const qreal w, const qreal h);
-    QGraphicsRectItem* makeObscuringRect(QGraphicsScene* scene,
-                                         const QRectF& rect,
-                                         const qreal opacity = 0.5,
-                                         const QColor& colour_ignoring_opacity = QColor(0, 0, 0));
     void makeText(QGraphicsScene* scene,  // text is added to scene
                   const QPointF& pos,
                   const TextConfig& config,
