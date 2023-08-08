@@ -91,8 +91,8 @@ void App::makeText(QGraphicsScene* scene,  // text is added to scene
 
     // alignRect(rect);
 
-    auto proxy = scene->addWidget(label);
-    proxy->setGeometry(rect);
+    scene->addWidget(label);
+    //proxy->setGeometry(rect);
 }
 
 void App::alignRect(QRectF& rect)
