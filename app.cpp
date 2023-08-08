@@ -17,8 +17,6 @@
 #include <QFont>
 #include <QLabel>
 
-#include "mainmenu.h"
-
 const qreal SCENE_WIDTH = 1000;
 const qreal SCENE_HEIGHT = 750;  // 4:3 aspect ratio
 const QPointF SCENE_CENTRE(SCENE_WIDTH * 0.5, SCENE_HEIGHT * 0.5);

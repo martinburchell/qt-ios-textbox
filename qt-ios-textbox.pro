@@ -75,9 +75,7 @@ ios {
 
 SOURCES += \
     app.cpp \
-    main.cpp \
-    mainmenu.cpp
+    main.cpp
 
 HEADERS += \
-    app.h \
-    mainmenu.h
+    app.h
