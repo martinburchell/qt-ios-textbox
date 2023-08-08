@@ -29,9 +29,10 @@ App::App(int& argc, char* argv[]) :
 
 int App::run()
 {
-    auto scene = new QGraphicsScene(SCENE_RECT);
-    scene->setBackgroundBrush(QBrush(QColor(0, 0, 0)));
-    auto graphics_widget = makeGraphicsWidget(scene, QColor(0, 0, 0));
+    // auto scene = new QGraphicsScene(SCENE_RECT);
+    // scene->setBackgroundBrush(QBrush(QColor(0, 0, 0)));
+    // auto graphics_widget = makeGraphicsWidget(scene, QColor(0, 0, 0));
+    // Q_UNUSED(graphics_widget)
 
     auto label = new QLabel("Correct");
 
@@ -40,10 +41,16 @@ int App::run()
     label->setFont(font);
     label->setAlignment(Qt::AlignCenter);
 
-    scene->addWidget(label);
+    // scene->addWidget(label);
 
     auto main_window = new QMainWindow();
-    main_window->setCentralWidget(graphics_widget);
+
+    auto widget = new QWidget();
+    auto vl = new QVBoxLayout(widget);
+    widget->setLayout(vl);
+    vl->addWidget(label);
+
+    main_window->setCentralWidget(widget);
     main_window->showMaximized();
 
     return exec();
