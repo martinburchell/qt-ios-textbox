@@ -24,11 +24,6 @@
 #include <QGraphicsProxyWidget>
 #include <QWidget>
 
-struct LabelAndProxy {
-    QLabel* label = nullptr;
-    QGraphicsProxyWidget* proxy = nullptr;
-};
-
 struct TextConfig {
 public:
     TextConfig(int font_size_px,
@@ -66,12 +61,12 @@ public:
                                          const QRectF& rect,
                                          const qreal opacity = 0.5,
                                          const QColor& colour_ignoring_opacity = QColor(0, 0, 0));
-    LabelAndProxy makeText(QGraphicsScene* scene,  // text is added to scene
-                           const QPointF& pos,
-                           const TextConfig& config,
-                           const QString& text,
-                           QFont font = QFont(),
-                           QWidget* parent = nullptr);
+    void makeText(QGraphicsScene* scene,  // text is added to scene
+                  const QPointF& pos,
+                  const TextConfig& config,
+                  const QString& text,
+                  QFont font = QFont(),
+                  QWidget* parent = nullptr);
     QString labelCss(const QColor& colour);
     QString colourCss(const QColor& colour);
     void alignRect(QRectF& rect, const Qt::Alignment alignment);

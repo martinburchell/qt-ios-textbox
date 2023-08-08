@@ -113,7 +113,7 @@ QGraphicsRectItem* App::makeObscuringRect(QGraphicsScene* scene,
     return scene->addRect(rect, pen, brush);
 }
 
-LabelAndProxy App::makeText(QGraphicsScene* scene,  // text is added to scene
+void App::makeText(QGraphicsScene* scene,  // text is added to scene
                             const QPointF& pos,
                             const TextConfig& config,
                             const QString& text,
@@ -123,33 +123,30 @@ LabelAndProxy App::makeText(QGraphicsScene* scene,  // text is added to scene
     Q_ASSERT(scene);
     QString css = labelCss(config.colour);
 
-    LabelAndProxy result;
-    result.label = new QLabel(text, parent);
-    result.label->setStyleSheet(css);
+    auto label = new QLabel(text, parent);
+    label->setStyleSheet(css);
     font.setPixelSize(config.font_size_px);
-    result.label->setFont(font);
-    result.label->setOpenExternalLinks(false);
-    result.label->setTextInteractionFlags(Qt::NoTextInteraction);
-    result.label->setAlignment(config.alignment);  // alignment WITHIN label
+    label->setFont(font);
+    label->setOpenExternalLinks(false);
+    label->setTextInteractionFlags(Qt::NoTextInteraction);
+    label->setAlignment(config.alignment);  // alignment WITHIN label
 
     QRectF rect(pos, QSizeF());
     if (config.width == -1) {
-        result.label->setWordWrap(false);
-        rect.setSize(result.label->size());
+        label->setWordWrap(false);
+        rect.setSize(label->size());
     } else {
         // word wrap
-        result.label->setWordWrap(true);
+        label->setWordWrap(true);
         rect.setSize(QSizeF(config.width,
-                            result.label->heightForWidth(config.width)));
+                            label->heightForWidth(config.width)));
     }
 
     // Now fix alignment of WHOLE object
     alignRect(rect, config.alignment);
 
-    result.proxy = scene->addWidget(result.label);
-    result.proxy->setGeometry(rect);
-
-    return result;
+    auto proxy = scene->addWidget(label);
+    proxy->setGeometry(rect);
 }
 
 QString App::labelCss(const QColor& colour)
