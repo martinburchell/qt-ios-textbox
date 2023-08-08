@@ -31,11 +31,4 @@ class App : public QApplication
 public:
     App(int& argc, char* argv[]);
     int run();
-    QWidget* makeGraphicsWidget(
-        QGraphicsScene* scene,
-        const QColor& background_colour
-    );
-    void setWidgetAsOnlyContents(QWidget* graphics_widget,
-                                 QWidget* graphics_view,
-                                 const int margin);
 };
