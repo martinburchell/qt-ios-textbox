@@ -19,9 +19,7 @@
 
 const qreal SCENE_WIDTH = 1000;
 const qreal SCENE_HEIGHT = 750;  // 4:3 aspect ratio
-const QPointF SCENE_CENTRE(SCENE_WIDTH * 0.5, SCENE_HEIGHT * 0.5);
 const QRectF SCENE_RECT(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
-const int TEXT_SIZE_PX = 20;
 
 
 App::App(int& argc, char* argv[]) :
@@ -82,7 +80,7 @@ void App::makeText(QGraphicsScene* scene,  // text is added to scene
     Q_ASSERT(scene);
 
     auto label = new QLabel(text, parent);
-    font.setPixelSize(TEXT_SIZE_PX);
+    font.setPixelSize(20);
     label->setFont(font);
     label->setAlignment(Qt::AlignCenter);
 
