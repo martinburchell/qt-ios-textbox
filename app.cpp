@@ -48,13 +48,6 @@ int App::run()
     auto graphics_widget = makeGraphicsWidget(scene, QColor(0, 0, 0));
 
     const QString& text = "Correct";
-    // const QColor& colour = QColor(0, 128, 0);
-
-    // auto answer_backdrop_rect = centredRect(SCENE_CENTRE,
-    //                                         0.3 * SCENE_WIDTH,
-    //                                         0.1 * SCENE_HEIGHT);
-
-    // scene->addRect(answer_backdrop_rect, QPen(Qt::NoPen), QBrush(colour));
     makeText(scene, SCENE_CENTRE, BASE_TEXT_CONFIG, text);
 
     auto main_window = new QMainWindow();
@@ -91,12 +84,6 @@ void App::setWidgetAsOnlyContents(QWidget* graphics_widget,
     vl->addWidget(graphics_view);
 }
 
-
-
-QRectF App::centredRect(const QPointF& centre, const qreal w, const qreal h)
-{
-    return QRectF(centre.x() - w / 2.0, centre.y() - h / 2.0, w, h);
-}
 
 
 void App::makeText(QGraphicsScene* scene,  // text is added to scene

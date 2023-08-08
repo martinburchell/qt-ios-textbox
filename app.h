@@ -56,7 +56,6 @@ public:
     void setWidgetAsOnlyContents(QWidget* graphics_widget,
                                  QWidget* graphics_view,
                                  const int margin);
-    QRectF centredRect(const QPointF& centre, const qreal w, const qreal h);
     void makeText(QGraphicsScene* scene,  // text is added to scene
                   const QPointF& pos,
                   const TextConfig& config,
