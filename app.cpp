@@ -50,7 +50,7 @@ int App::run()
 
     const QString& text = "Correct";
     const QColor& colour = QColor(0, 128, 0);
-    makeObscuringRect(scene, SCENE_RECT, FEEDBACK_OPACITY, colour);
+    // makeObscuringRect(scene, SCENE_RECT, FEEDBACK_OPACITY, colour);
 
     auto answer_backdrop_rect = centredRect(SCENE_CENTRE,
                                             0.3 * SCENE_WIDTH,
@@ -114,11 +114,11 @@ QGraphicsRectItem* App::makeObscuringRect(QGraphicsScene* scene,
 }
 
 void App::makeText(QGraphicsScene* scene,  // text is added to scene
-                            const QPointF& pos,
-                            const TextConfig& config,
-                            const QString& text,
-                            QFont font,
-                            QWidget* parent)
+                   const QPointF& pos,
+                   const TextConfig& config,
+                   const QString& text,
+                   QFont font,
+                   QWidget* parent)
 {
     Q_ASSERT(scene);
     QString css = labelCss(config.colour);
