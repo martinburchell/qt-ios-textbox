@@ -1,26 +1,19 @@
 #include "app.h"
 
 #include <QApplication>
-#include <QBrush>
-#include <QColor>
-#include <QGraphicsRectItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QLayout>
 #include <QMainWindow>
-#include <QPen>
-#include <QPointF>
 #include <QRectF>
-#include <QString>
 #include <QVBoxLayout>
 #include <QWidget>
 #include <QFont>
 #include <QLabel>
 
-const qreal SCENE_WIDTH = 1000;
-const qreal SCENE_HEIGHT = 750;  // 4:3 aspect ratio
+const qreal SCENE_WIDTH = 800;
+const qreal SCENE_HEIGHT = 600;
 const QRectF SCENE_RECT(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
-
+const int TEXT_SIZE_PT = 20;
 
 App::App(int& argc, char* argv[]) :
     QApplication(argc, argv){
@@ -34,19 +27,17 @@ int App::run()
     auto graphics_view = new QGraphicsView(scene);
     auto graphics_widget = new QWidget();
 
-    QLayout* l = graphics_widget->layout();
-    delete l;
+    delete graphics_widget->layout();
 
-    auto vl = new QVBoxLayout(graphics_widget);
-    graphics_widget->setLayout(vl);
-    vl->addWidget(graphics_view);
+    auto layout = new QVBoxLayout();
+    graphics_widget->setLayout(layout);
+    layout->addWidget(graphics_view);
 
-    auto label = new QLabel("Correct");
+    auto label = new QLabel("Testing...");
 
     auto font = QFont();
-    font.setPixelSize(20);
+    font.setPointSize(TEXT_SIZE_PT);
     label->setFont(font);
-    label->setAlignment(Qt::AlignCenter);
 
     scene->addWidget(label);
 
